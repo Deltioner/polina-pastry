@@ -100,7 +100,6 @@ export default function ContactPage() {
                   { id: "name", label: "Your name", type: "text", required: true },
                   { id: "email", label: "Email address", type: "email", required: true },
                   { id: "phone", label: "Phone number", type: "tel", required: false },
-                  { id: "date", label: "Pickup / delivery date", type: "date", required: false },
                 ].map(({ id, label, type, required }) => (
                   <div key={id}>
                     <label className="block font-body text-xs tracking-wider uppercase text-burgundy-700/70 mb-2">
@@ -110,6 +109,28 @@ export default function ContactPage() {
                     <input type={type} required={required} className={inputCls} />
                   </div>
                 ))}
+                <div>
+                  <label
+                    htmlFor="contact-order-date"
+                    className="block font-body text-xs tracking-wider uppercase text-burgundy-700/70 mb-2"
+                  >
+                    When do you need it?
+                  </label>
+                  <input
+                    id="contact-order-date"
+                    name="date"
+                    type="date"
+                    min={(() => {
+                      const t = new Date();
+                      t.setDate(t.getDate() + 1);
+                      return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                    })()}
+                    className={inputCls}
+                  />
+                  <p className="font-body text-[11px] text-burgundy-700/55 mt-1.5 leading-snug">
+                    Minimum 24 h notice · 48–72 h for custom cakes.
+                  </p>
+                </div>
                 <div>
                   <label className="block font-body text-xs tracking-wider uppercase text-burgundy-700/70 mb-2">
                     Message
