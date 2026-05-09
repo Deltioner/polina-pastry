@@ -1,0 +1,22 @@
+i want to build a website shop project name polina pastry for a girl who makes Custom cakes, Pastry, Cookies her Slogan is Created by hand, Baked with love. she is in Kampen
+Netherlands.
+
+i want this website to have different pages, where you can have a home page and a our story page also a shop page and also another page that gives an idea to the website visitor an idea about Ukraine and interesting facts about Ukraine nature people oats field and about war in Ukraine and what Russia is doing there.
+
+i want this website to have an admin page where admin can add  products to the shop page.
+Those products will be in a product cart where you can see phots and title discription and price also cart icon to add it to cart.
+and when you click on the product cart  it takes you to a page where you have at the top different photos of the product and then title and down there is the description and down there is ingridents.
+and at the bottom there is order. button where you can order it
+
+i want the website to be made of three colors the first color is 780000 to be the main color and then the gold color to be the color of texts and ffddd2 this color to be used in places where it needed to make the website look lexury and fancy and beautiful website.
+
+i want to use nextjs and typescript and for the backend i dont have what any best choice we can use what is more suitable for this.
+
+i wnat this website to have fully operated four languages with their flags on them english, dutch, ukrainian and arabic.
+
+before you start creating and designing if you have any question for anything i didnt mention ask me first 
+
+
+
+
+This Paska is based on egg yolks and made with soft, airy dough, generously filled with three types of raisins, dried apricots, candied fruits and dried cranberries.

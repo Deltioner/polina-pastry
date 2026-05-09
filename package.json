@@ -1,26 +1,35 @@
 {
-  "name": "polina",
+  "name": "polina-pastry",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
-    "next": "16.2.4",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.105.3",
+    "clsx": "latest",
+    "lucide-react": "latest",
+    "next": "latest",
+    "nodemailer": "^8.0.7",
+    "postcss": "^8.5.13",
+    "react": "latest",
+    "react-dom": "latest",
+    "stripe": "^22.1.1",
+    "zustand": "latest"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@tailwindcss/postcss": "^4.2.4",
+    "@types/node": "latest",
+    "@types/nodemailer": "^8.0.0",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "tailwindcss": "^4.2.4",
+    "typescript": "latest"
   }
 }

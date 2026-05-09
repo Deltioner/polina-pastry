@@ -1,26 +1,342 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Type — soft luxury */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-script: "Caveat", "Brush Script MT", cursive;
+  --font-sans: "Inter", system-ui, sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Burgundy — softened from #570a11 to a romantic wine */
+  --color-burgundy-50:  #FBF0F1;
+  --color-burgundy-100: #F5DCDF;
+  --color-burgundy-200: #ECB8BE;
+  --color-burgundy-300: #D88E96;
+  --color-burgundy-400: #B85968;
+  --color-burgundy-500: #9C2A3F;  /* main soft burgundy */
+  --color-burgundy-600: #7E2233;
+  --color-burgundy-700: #631A28;
+  --color-burgundy-800: #4A1518;  /* plum text */
+  --color-burgundy-900: #321016;
+  --color-burgundy-950: #1F080B;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Champagne (was harsh gold, now warmer) */
+  --color-gold-100: #FBF3DC;
+  --color-gold-200: #F4E1A8;
+  --color-gold-300: #ECCD75;
+  --color-gold-400: #DEB752;
+  --color-gold-500: #D4AF37;  /* champagne */
+  --color-gold-600: #B89530;
+  --color-gold-700: #997A26;
+  --color-gold-800: #7A621E;
+  --color-gold-900: #5C4A16;
+
+  /* Caramel — for body/secondary text */
+  --color-caramel-300: #C99879;
+  --color-caramel-500: #8B5A2B;
+  --color-caramel-700: #6B4422;
+
+  /* Blush — the soft luxury accent */
+  --color-blush-50:  #FFF6F1;
+  --color-blush-100: #FFE9DD;
+  --color-blush-200: #FFDDD2;  /* signature blush */
+  --color-blush-300: #FFC2AE;
+  --color-blush-400: #F9A78A;
+
+  /* Cream — page bg */
+  --color-cream-50:  #FFF8F3;  /* primary bg */
+  --color-cream-100: #FBF1E8;
+  --color-cream-200: #F5E5D6;
+  --color-cream-300: #ECD3BE;
+
+  --color-dark: #4A1518;  /* plum, never pure black */
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50%     { transform: translateY(-8px) rotate(2deg); }
   }
 }
 
+:root {
+  --burgundy: #9C2A3F;
+  --burgundy-deep: #7E2233;
+  --plum: #4A1518;
+  --gold: #D4AF37;
+  --gold-light: #ECCD75;
+  --blush: #FFDDD2;
+  --blush-soft: #FFE9DD;
+  --cream: #FFF8F3;
+  --caramel: #8B5A2B;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFF8F3;
+  color: var(--plum);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+/* ── Text-selection / cursor ──────────────────────────────
+   Everything reads like printed text: arrow cursor, no selection.
+   Only real form fields get the text cursor + selection. */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+input, textarea, [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: text;
+}
+.selectable {
+  -webkit-user-select: text;
+  user-select: text;
+}
+a, button, [role="button"] { cursor: pointer; }
+button:disabled, [aria-disabled="true"] { cursor: not-allowed; }
+
+[dir="rtl"] {
+  font-family: "Inter", "Noto Naskh Arabic", system-ui, serif;
+}
+
+/* ── Decorative dividers ─────────────────────────────── */
+.gold-divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  margin: 0 auto;
+}
+
+.gold-divider-left {
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, #D4AF37, transparent);
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(90deg, transparent, #D4AF37 50%, transparent);
+}
+
+/* Soft warm hero overlay (cream wash, not dark) */
+.bg-hero-gradient {
+  background: linear-gradient(135deg,
+    rgba(255, 248, 243, 0.88) 0%,
+    rgba(255, 221, 210, 0.65) 100%);
+}
+
+.script {
+  font-family: "Caveat", cursive;
+  font-weight: 500;
+}
+
+/* Soft heart-shape divider for "with love" accents */
+.heart-divider::before,
+.heart-divider::after {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: #D4AF37;
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+/* ── Cards ─────────────────────────────────────────────── */
+.product-card {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.4s ease,
+              border-color 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -10px rgba(156, 42, 63, 0.18),
+              0 4px 16px -4px rgba(255, 221, 210, 0.4);
+  border-color: #FFDDD2;
+}
+
+.soft-card {
+  background: white;
+  border: 1px solid #FFE9DD;
+  border-radius: 18px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.soft-card:hover {
+  border-color: #FFDDD2;
+  box-shadow: 0 8px 24px -8px rgba(156, 42, 63, 0.12);
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, #9C2A3F 0%, #7E2233 100%);
+  color: #FFF8F3;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease,
+              box-shadow 0.3s ease,
+              background 0.3s ease;
+  box-shadow: 0 4px 14px -4px rgba(156, 42, 63, 0.35);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7E2233 0%, #631A28 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -6px rgba(156, 42, 63, 0.5);
+}
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #9C2A3F;
+  border: 1.5px solid #9C2A3F;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: #9C2A3F;
+  color: #FFF8F3;
+}
+
+.btn-blush {
+  background: linear-gradient(135deg, #FFDDD2 0%, #FFE9DD 100%);
+  color: #9C2A3F;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  border: 1px solid #FFDDD2;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.btn-blush:hover {
+  background: linear-gradient(135deg, #FFC2AE 0%, #FFDDD2 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -6px rgba(255, 194, 174, 0.5);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #ECCD75 0%, #D4AF37 60%, #ECCD75 100%);
+  background-size: 200% 100%;
+  color: #4A1518;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s ease;
+}
+.btn-gold:hover {
+  background-position: right center;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -4px rgba(212, 175, 55, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #4A1518;
+  border-bottom: 1.5px solid rgba(156, 42, 63, 0.3);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  padding: 4px 0;
+  transition: color 0.3s, border-color 0.3s;
+}
+.btn-ghost:hover {
+  color: #9C2A3F;
+  border-color: #9C2A3F;
+}
+
+/* ── Reveal animations ───────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ── Inputs ──────────────────────────────────────────── */
+input, textarea, select {
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #9C2A3F !important;
+  box-shadow: 0 0 0 3px rgba(255, 221, 210, 0.6);
+}
+
+/* ── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FBF1E8; }
+::-webkit-scrollbar-thumb {
+  background: #FFDDD2;
+  border-radius: 999px;
+  border: 2px solid #FBF1E8;
+}
+::-webkit-scrollbar-thumb:hover { background: #FFC2AE; }
+
+/* ── Admin sidebar ───────────────────────────────────── */
+.admin-sidebar {
+  background: linear-gradient(180deg, #9C2A3F 0%, #7E2233 100%);
+  border-right: 1px solid rgba(255, 221, 210, 0.18);
+}
+
+/* ── Soft confetti / blossom decoration ─────────────── */
+.blossom-bg {
+  position: relative;
+}
+.blossom-bg::before,
+.blossom-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  z-index: 0;
+}
+.blossom-bg::before {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(255, 221, 210, 0.55), transparent 70%);
+  top: -80px;
+  left: -80px;
+}
+.blossom-bg::after {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18), transparent 70%);
+  bottom: -60px;
+  right: -60px;
 }
