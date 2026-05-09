@@ -230,12 +230,28 @@ function CartContent() {
                         placeholder="Phone *"
                         className={inputCls}
                       />
-                      <input
-                        name="date"
-                        type="date"
-                        placeholder="Pickup / delivery date"
-                        className={inputCls}
-                      />
+                      <div>
+                        <label
+                          htmlFor="cart-order-date"
+                          className="block font-body text-xs uppercase tracking-widest text-burgundy-700/65 mb-1.5"
+                        >
+                          When do you need it?
+                        </label>
+                        <input
+                          id="cart-order-date"
+                          name="date"
+                          type="date"
+                          min={(() => {
+                            const t = new Date();
+                            t.setDate(t.getDate() + 1);
+                            return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                          })()}
+                          className={inputCls}
+                        />
+                        <p className="font-body text-[11px] text-burgundy-700/55 mt-1.5 leading-snug">
+                          Minimum 24 h notice · 48–72 h for custom cakes.
+                        </p>
+                      </div>
                       <input
                         name="address"
                         placeholder="Delivery address (optional)"
