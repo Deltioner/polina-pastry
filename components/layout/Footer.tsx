@@ -99,6 +99,7 @@ export default function Footer() {
                 { href: "/", label: t.nav.home },
                 { href: "/shop", label: t.nav.shop },
                 { href: "/about", label: t.nav.about },
+                { href: "/ukraine", label: t.nav.ukraine },
                 { href: "/contact", label: t.nav.contact },
               ].map((l) => (
                 <Link
@@ -149,12 +150,6 @@ export default function Footer() {
           <p className="font-body text-xs text-burgundy-700/70 flex items-center gap-1.5">
             Made with <Heart size={11} fill="currentColor" className="text-burgundy-500" />
             <span>· © {new Date().getFullYear()} Polina Pastry · {t.footer.rights}</span>
-          </p>
-          <p className="font-body text-[11px] italic text-burgundy-700/45 flex items-center gap-1.5 tracking-wide">
-            <span>created by</span>
-            <span className="not-italic font-medium uppercase tracking-[0.18em] text-burgundy-700/70">
-              Apion Technology
-            </span>
           </p>
         </div>
       </div>
