@@ -72,8 +72,8 @@ export default function AboutPage() {
               <div className="gold-divider-left" />
               <p className="font-body text-burgundy-700/80 text-lg leading-relaxed">{body}</p>
             </div>
-            <div className="md:w-1/2 relative">
-              <div className="h-72 md:h-80 relative rounded-[32px] overflow-hidden border-[5px] border-cream-50 shadow-xl shadow-burgundy-500/15">
+            <div className="w-full md:w-1/2 relative">
+              <div className="w-full h-72 md:h-80 relative rounded-[32px] overflow-hidden border-[5px] border-cream-50 shadow-xl shadow-burgundy-500/15">
                 <Image
                   src={STORY_IMAGES[i]}
                   alt={title}
