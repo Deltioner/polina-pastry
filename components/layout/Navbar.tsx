@@ -327,25 +327,13 @@ export default function Navbar() {
             />
             {t.nav.ukraine}
           </Link>
-          <div className="border-t border-blush-200 pt-5">
-            <p className="font-body text-xs uppercase tracking-widest text-caramel-500 mb-3">Language</p>
-            <div className="flex flex-wrap gap-2">
-              {LOCALES.map((loc) => (
-                <button
-                  key={loc}
-                  onClick={() => { setLocale(loc as Locale); setOpen(false); }}
-                  className={clsx(
-                    "px-3 py-1.5 rounded-full text-sm flex items-center gap-2 transition-colors",
-                    locale === loc
-                      ? "bg-burgundy-500 text-cream-50"
-                      : "bg-blush-100 text-burgundy-700 hover:bg-blush-200"
-                  )}
-                >
-                  <Flag code={loc as Locale} size={18} className="ring-1 ring-burgundy-700/10" />
-                  <span>{LOCALE_LABELS[loc as Locale]}</span>
-                </button>
-              ))}
-            </div>
+          <div className="border-t border-blush-200 pt-6 text-center">
+            <p className="font-display text-xl text-burgundy-500 leading-snug">
+              Polina Pastry
+            </p>
+            <p className="script text-2xl text-caramel-500 mt-1">
+              made with love
+            </p>
           </div>
         </div>
       )}
