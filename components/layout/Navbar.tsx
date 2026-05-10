@@ -288,7 +288,6 @@ export default function Navbar() {
             { href: "/shop", label: t.nav.shop },
             { href: "/about", label: t.nav.about },
             { href: "/contact", label: t.nav.contact },
-            { href: "/ukraine", label: t.nav.ukraine },
           ].map((l) => {
             const active = isActive(l.href);
             return (
@@ -309,6 +308,25 @@ export default function Navbar() {
               </Link>
             );
           })}
+
+          {/* Ukraine — flag pill, centered, with 1cm extra space above */}
+          <Link
+            href="/ukraine"
+            onClick={() => setOpen(false)}
+            aria-current={isActive("/ukraine") ? "page" : undefined}
+            className={clsx(
+              "self-center mt-[1cm] inline-flex items-center gap-2 px-4 py-2 rounded-full border font-body text-base font-medium transition-all duration-200",
+              isActive("/ukraine")
+                ? "bg-blush-200 border-blush-300 text-burgundy-500 shadow-sm"
+                : "bg-blush-100 border-blush-200 text-burgundy-800 hover:bg-blush-200 hover:border-blush-300"
+            )}
+          >
+            <span
+              aria-hidden="true"
+              className="w-3 h-3 rounded-full shrink-0 ring-1 ring-burgundy-700/15 bg-[linear-gradient(to_bottom,#0057B7_50%,#FFD700_50%)]"
+            />
+            {t.nav.ukraine}
+          </Link>
           <div className="border-t border-blush-200 pt-5">
             <p className="font-body text-xs uppercase tracking-widest text-caramel-500 mb-3">Language</p>
             <div className="flex flex-wrap gap-2">
