@@ -222,14 +222,18 @@ export default function Navbar() {
           </Link>
 
           {/* Language */}
-          <div ref={langRef} className="relative hidden lg:block">
+          <div ref={langRef} className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blush-100/60 hover:bg-blush-200/80 text-burgundy-700 text-sm font-medium transition-colors"
+              aria-label="Change language"
+              className="flex items-center gap-2 px-2 sm:px-3 py-1.5 rounded-full bg-blush-100/60 hover:bg-blush-200/80 text-burgundy-700 text-sm font-medium transition-colors"
             >
               <Flag code={locale} size={20} className="ring-1 ring-burgundy-700/10" />
-              <span className="text-xs uppercase tracking-wider">{locale}</span>
-              <ChevronDown size={12} className={clsx("transition-transform", langOpen && "rotate-180")} />
+              <span className="hidden sm:inline text-xs uppercase tracking-wider">{locale}</span>
+              <ChevronDown
+                size={12}
+                className={clsx("hidden sm:block transition-transform", langOpen && "rotate-180")}
+              />
             </button>
             {langOpen && (
               <div className="absolute top-11 right-0 bg-white border border-blush-200 shadow-xl shadow-burgundy-500/10 rounded-2xl py-2 min-w-[180px] z-50 overflow-hidden">
